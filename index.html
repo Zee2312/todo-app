@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Today – To-do list</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div>
+        <h1>Today</h1>
+        <p class="date" id="date"></p>
+      </div>
+      <div class="ring" id="ring" role="img" aria-label="Progress">
+        <svg viewBox="0 0 44 44" aria-hidden="true">
+          <circle class="ring-bg" cx="22" cy="22" r="18"></circle>
+          <circle class="ring-fg" id="ring-fg" cx="22" cy="22" r="18"></circle>
+        </svg>
+        <span id="ring-text">0/0</span>
+      </div>
+    </header>
+
+    <form class="add" id="add-form" autocomplete="off">
+      <label class="sr-only" for="task-input">New task</label>
+      <input id="task-input" type="text" placeholder="What needs doing?" maxlength="120" required>
+      <div class="add-row">
+        <label class="sr-only" for="priority">Priority</label>
+        <select id="priority">
+          <option value="1">Low priority</option>
+          <option value="2" selected>Medium priority</option>
+          <option value="3">High priority</option>
+        </select>
+        <label class="sr-only" for="due">Due date</label>
+        <input id="due" type="date">
+        <button class="btn-add" type="submit">Add task</button>
+      </div>
+    </form>
+
+    <div class="toolbar">
+      <div class="filters" id="filters" role="group" aria-label="Filter tasks">
+        <button data-filter="all" aria-pressed="true">All</button>
+        <button data-filter="active" aria-pressed="false">To do</button>
+        <button data-filter="done" aria-pressed="false">Done</button>
+      </div>
+      <label class="sort">
+        <span class="sr-only">Sort tasks</span>
+        <select id="sort">
+          <option value="manual">Newest first</option>
+          <option value="priority">By priority</option>
+          <option value="due">By due date</option>
+        </select>
+      </label>
+    </div>
+
+    <ul class="list" id="list"></ul>
+
+    <p class="empty" id="empty" hidden></p>
+
+    <footer class="foot">
+      <span id="left">0 tasks left</span>
+      <button class="link" id="clear-done" type="button">Clear completed</button>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span id="toast-text"></span>
+    <button class="link" id="undo" type="button" hidden>Undo</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
